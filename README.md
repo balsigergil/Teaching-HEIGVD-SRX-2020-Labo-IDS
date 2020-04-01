@@ -286,7 +286,7 @@ Vous pouvez aussi utiliser des captures Wireshark ou des fichiers snort.log.xxxx
 
 ---
 
-**Reponse :**  
+**Reponse :**  Les préprocesseurs permettent aux utilisateurs d'étendre les fonctionnalités de Snort facilement de manières modulaire. Avec ces préprocesseurs, les paquets peuvent être analysés et modifiés.
 
 ---
 
@@ -294,7 +294,11 @@ Vous pouvez aussi utiliser des captures Wireshark ou des fichiers snort.log.xxxx
 
 ---
 
-**Reponse :**  
+**Reponse :**  Étant donné que notre configuration est quasi vierge, aucun préprocesseur n'a été configuré. Il est possible de rajouter des préprocesseurs à la configuration de Snort de la manière suivante :
+
+```
+preprocessor <name>: <options>
+```
 
 ---
 
@@ -310,7 +314,7 @@ alert tcp any any -> any any (msg:"Mon nom!"; content:"Rubinstein"; sid:4000015;
 
 ---
 
-**Reponse :**  
+**Reponse :**  Cette règle alerte si un paquet TCP contient "Rubinstein". Le paquet en question peut venir de n'importe quelle adresse et utiliser n'importe quel port et aller vers n'importe quelle adresse sur n'importe quel port.
 
 ---
 
