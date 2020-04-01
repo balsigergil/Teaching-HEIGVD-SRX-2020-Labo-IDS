@@ -328,7 +328,7 @@ sudo snort -c myrules.rules -i eth0
 
 ---
 
-**Reponse :**  
+**Reponse :**  Il s'affiche les mêmes messages qu'à la question 2. Soit des `No preprocessors configured for policy 0` à répétition.
 
 ---
 
