@@ -544,13 +544,17 @@ Ci-dessous, un extrait des logs vu dans Wireshark:
 
 ### Detecter un ping d'un autre système
 
-Ecrire une règle qui alerte à chaque fois que votre système reçoit un ping depuis une autre machine (je sais que la situation actuelle du Covid-19 ne vous permet pas de vous mettre ensemble... utilisez votre imagination pour trouver la solution à cette question !). Assurez-vous que **ça n'alerte pas** quand c'est vous qui envoyez le ping vers un autre système !
+Écrire une règle qui alerte à chaque fois que votre système reçoit un ping depuis une autre machine (je sais que la situation actuelle du Covid-19 ne vous permet pas de vous mettre ensemble... utilisez votre imagination pour trouver la solution à cette question !). Assurez-vous que **ça n'alerte pas** quand c'est vous qui envoyez le ping vers un autre système !
 
 **Question 9: Quelle est votre règle ?**
 
 ---
 
 **Reponse :**  
+
+```
+alert icmp any any -> 192.168.0.132 any (msg:"On m'a ping!";itype:8;sid:4000017;rev:1;)
+```
 
 ---
 
@@ -559,16 +563,15 @@ Ecrire une règle qui alerte à chaque fois que votre système reçoit un ping d
 
 ---
 
-**Reponse :**  
+**Reponse :**  Grâce à l'option `itype` qui permet de spécifier le type de paquet ICMP. 8 étant le numéro des echo request. On ne veut pas alerter pour les réponse ICMP (type 0).
 
 ---
-
 
 **Question 11: Où le message a-t-il été journalisé ?**
 
 ---
 
-**Reponse :**  
+**Reponse :**  Dans `/var/log/snort.log.1585924066`
 
 ---
 
@@ -579,6 +582,10 @@ Ecrire une règle qui alerte à chaque fois que votre système reçoit un ping d
 
 **Reponse :**  
 
+Voici le résultat si décide de ne pas logguer les informations dans /var/log/snort mais directement dans la console.
+
+![](images/snort_12.png)
+
 ---
 
 --
@@ -587,11 +594,11 @@ Ecrire une règle qui alerte à chaque fois que votre système reçoit un ping d
 
 Modifier votre règle pour que les pings soient détectés dans les deux sens.
 
-**Question 13: Qu'est-ce que vous avez modifié pour que la règle détecte maintenant le trafic dans les deux senses ?**
+**Question 13: Qu'est-ce que vous avez modifié pour que la règle détecte maintenant le trafic dans les deux sens ?**
 
 ---
 
-**Reponse :**  
+**Reponse :**  On supprime l'option `itype`. Ainsi on alerte sur les requêtes et les réponses ICMP à destination de `192.168.0.132`. Si on ping et qu'on reçoit une réponse, on est alerté. Si on reçoit une request, on est alerté.
 
 ---
 
@@ -600,7 +607,7 @@ Modifier votre règle pour que les pings soient détectés dans les deux sens.
 
 ### Detecter une tentative de login SSH
 
-Essayer d'écrire une règle qui Alerte qu'une tentative de session SSH a été faite depuis la machine d'un voisin (je sais que la situation actuelle du Covid-19 ne vous permet pas de vous mettre ensemble... utilisez votre imagination pour trouver la solution à cette question !). Si vous avez besoin de plus d'information sur ce qui décrit cette tentative (adresses, ports, protocoles), servez-vous de Wireshark pour analyser les échanges lors de la requête de connexion depuis votre voisi.
+Essayer d'écrire une règle qui Alerte qu'une tentative de session SSH a été faite depuis la machine d'un voisin (je sais que la situation actuelle du Covid-19 ne vous permet pas de vous mettre ensemble... utilisez votre imagination pour trouver la solution à cette question !). Si vous avez besoin de plus d'information sur ce qui décrit cette tentative (adresses, ports, protocoles), servez-vous de Wireshark pour analyser les échanges lors de la requête de connexion depuis votre voisin.
 
 **Question 14: Quelle est votre règle ? Montrer la règle et expliquer en détail comment elle fonctionne.**
 
