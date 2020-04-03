@@ -571,10 +571,9 @@ alert icmp any any -> 192.168.0.132 any (msg:"On m'a ping!";itype:8;sid:4000017;
 
 ---
 
-**Reponse :**  Dans `/var/log/snort.log.1585924066`
+**Reponse :**  Dans `/var/log/snort/alert`
 
 ---
-
 
 **Question 12: Qu'est-ce qui a été journalisé ?**
 
@@ -582,7 +581,7 @@ alert icmp any any -> 192.168.0.132 any (msg:"On m'a ping!";itype:8;sid:4000017;
 
 **Reponse :**  
 
-Voici le résultat si décide de ne pas logguer les informations dans /var/log/snort mais directement dans la console.
+Voici le résultat si on décide de ne pas logguer les informations dans `/var/log/snort` mais directement dans la console.
 
 ![](images/snort_12.png)
 
@@ -615,14 +614,30 @@ Essayer d'écrire une règle qui Alerte qu'une tentative de session SSH a été 
 
 **Reponse :**  
 
----
+```
+alert tcp any any -> 192.168.0.132 22 (msg:"Connexion SSH!";flags:S;sid:4000018;rev:1;)
+```
 
+On alerte uniquement lorsque le flag TCP faut SYN, c'est-à-dire que la connexion est en train de ce faire. On n'est ainsi pas alerté des autres paquets SSH quand la connexion est bien effectuée.
+
+---
 
 **Question 15: Montrer le message d'alerte enregistré dans le fichier d'alertes.** 
 
 ---
 
 **Reponse :**  
+
+```
+[**] [1:4000018:1] Connexion SSH! [**]
+[Priority: 0] 
+04/03-15:21:09.050189 192.168.0.20:65317 -> 192.168.0.132:22
+TCP TTL:128 TOS:0x0 ID:59997 IpLen:20 DgmLen:52 DF
+******S* Seq: 0x27595D07  Ack: 0x0  Win: 0xFAF0  TcpLen: 32
+TCP Options (6) => MSS: 1460 NOP WS: 8 NOP NOP SackOK
+```
+
+
 
 ---
 
