@@ -637,8 +637,6 @@ TCP TTL:128 TOS:0x0 ID:59997 IpLen:20 DgmLen:52 DF
 TCP Options (6) => MSS: 1460 NOP WS: 8 NOP NOP SackOK
 ```
 
-
-
 ---
 
 --
@@ -684,6 +682,9 @@ Faire des recherches à propos des outils `fragroute` et `fragtest`.
 ---
 
 **Reponse :**  
+
+- **fragroute**:  permet d'intercepter, modifier et réécrire le trafic de sortie
+- **fragtest**: permet de tester le comportement de ré-assemblage des fragments IP
 
 ---
 
