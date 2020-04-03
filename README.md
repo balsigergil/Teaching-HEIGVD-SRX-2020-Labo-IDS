@@ -514,7 +514,29 @@ Ecrire une règle qui journalise (sans alerter) un message à chaque fois que Wi
 
 ---
 
-**Reponse :**  
+**Reponse :** 
+
+> Quelle est votre règle ?
+
+La régle est la suivante :
+
+```
+log tcp any any -> [2620:0:862:ed1a::1] any (msg:"Wikipedia!";sid:40000016;rev:1;)
+```
+
+`2620:0:862:ed1a::1` étant l'adresse IPv6 de [wikipedia.org](wikipedia.org).
+
+> Où le message a-t'il été journalisé ?
+
+Les logs ont été écrit dans `/var/log/snort/snort.log.1585922555`.
+
+> Qu'est-ce qui a été journalisé ?
+
+Uniquement les paquets TCP à destination de `2620:0:862:ed1a::1`.
+
+Ci-dessous, un extrait des logs vu dans Wireshark:
+
+![](images/snort_log.png)
 
 ---
 
