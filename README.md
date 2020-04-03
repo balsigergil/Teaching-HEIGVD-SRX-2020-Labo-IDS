@@ -338,7 +338,7 @@ Aller à un site web contenant dans son text votre nom ou votre mot clé que vou
 
 ---
 
-**Reponse :**  
+**Reponse :**  Rien de particulier, les message sont les mêmes qu'à la question 4. C'est parce que les alertes vont dans le fichier `/var/log/snort/alert` et pas dans la console. Il est possible de les afficher dans la console avec l'option Snort `-A console`.
 
 ---
 
@@ -349,6 +349,108 @@ Arrêter Snort avec `CTRL-C`.
 ---
 
 **Reponse :**  
+
+```
+===============================================================================
+Run time for packet processing was 9.135840 seconds
+Snort processed 166 packets.
+Snort ran for 0 days 0 hours 0 minutes 9 seconds
+   Pkts/sec:           18
+===============================================================================
+Memory usage summary:
+  Total non-mmapped bytes (arena):       2293760
+  Bytes in mapped regions (hblkhd):      17252352
+  Total allocated space (uordblks):      2070176
+  Total free space (fordblks):           223584
+  Topmost releasable block (keepcost):   66688
+===============================================================================
+Packet I/O Totals:
+   Received:          170
+   Analyzed:          166 ( 97.647%)
+    Dropped:            0 (  0.000%)
+   Filtered:            0 (  0.000%)
+Outstanding:            4 (  2.353%)
+   Injected:            0
+===============================================================================
+Breakdown by protocol (includes rebuilt packets):
+        Eth:          166 (100.000%)
+       VLAN:            0 (  0.000%)
+        IP4:          119 ( 71.687%)
+       Frag:            0 (  0.000%)
+       ICMP:            0 (  0.000%)
+        UDP:           24 ( 14.458%)
+        TCP:           92 ( 55.422%)
+        IP6:           38 ( 22.892%)
+    IP6 Ext:           43 ( 25.904%)
+   IP6 Opts:            5 (  3.012%)
+      Frag6:            0 (  0.000%)
+      ICMP6:            8 (  4.819%)
+       UDP6:            6 (  3.614%)
+       TCP6:           24 ( 14.458%)
+     Teredo:            0 (  0.000%)
+    ICMP-IP:            0 (  0.000%)
+    IP4/IP4:            0 (  0.000%)
+    IP4/IP6:            0 (  0.000%)
+    IP6/IP4:            0 (  0.000%)
+    IP6/IP6:            0 (  0.000%)
+        GRE:            0 (  0.000%)
+    GRE Eth:            0 (  0.000%)
+   GRE VLAN:            0 (  0.000%)
+    GRE IP4:            0 (  0.000%)
+    GRE IP6:            0 (  0.000%)
+GRE IP6 Ext:            0 (  0.000%)
+   GRE PPTP:            0 (  0.000%)
+    GRE ARP:            0 (  0.000%)
+    GRE IPX:            0 (  0.000%)
+   GRE Loop:            0 (  0.000%)
+       MPLS:            0 (  0.000%)
+        ARP:            9 (  5.422%)
+        IPX:            0 (  0.000%)
+   Eth Loop:            0 (  0.000%)
+   Eth Disc:            0 (  0.000%)
+   IP4 Disc:            3 (  1.807%)
+   IP6 Disc:            0 (  0.000%)
+   TCP Disc:            0 (  0.000%)
+   UDP Disc:            0 (  0.000%)
+  ICMP Disc:            0 (  0.000%)
+All Discard:            3 (  1.807%)
+      Other:            0 (  0.000%)
+Bad Chk Sum:            3 (  1.807%)
+    Bad TTL:            0 (  0.000%)
+     S5 G 1:            0 (  0.000%)
+     S5 G 2:            0 (  0.000%)
+      Total:          166
+===============================================================================
+Action Stats:
+     Alerts:           17 ( 10.241%)
+     Logged:           17 ( 10.241%)
+     Passed:            0 (  0.000%)
+Limits:
+      Match:            0
+      Queue:            0
+        Log:            0
+      Event:            0
+      Alert:            0
+Verdicts:
+      Allow:          166 ( 97.647%)
+      Block:            0 (  0.000%)
+    Replace:            0 (  0.000%)
+  Whitelist:            0 (  0.000%)
+  Blacklist:            0 (  0.000%)
+     Ignore:            0 (  0.000%)
+      Retry:            0 (  0.000%)
+===============================================================================
+```
+
+La première partie indique combien de temps Snort à fonctionné, le nombre de paquets analysés ainsi que le nombre de paquets par seconde.
+
+La deuxième partie indique l'utilisation de la mémoire.
+
+La troisième partie montre les paquets reçus, analysés, annulé etc... ainsi que leur pourcentage par rapport au nombre total de paquets reçus.
+
+La quatrième partie regroupe les paquets par protocole.
+
+La cinquième partie montre les statistique de la session soit le nombre d'alerte, de log et le nombre de paquets autorisés, rejetés, etc...
 
 ---
 
@@ -361,8 +463,46 @@ Aller au répertoire /var/log/snort. Ouvrir le fichier `alert`. Vérifier qu'il 
 
 **Reponse :**  
 
----
+```
+[**] [1:4000015:1] Mon nom! [**]
+[Priority: 0] 
+04/03-13:07:03.485390 192.168.0.132:60944 -> 93.88.240.114:80
+TCP TTL:64 TOS:0x0 ID:8891 IpLen:20 DgmLen:483 DF
+***AP*** Seq: 0x48324AED  Ack: 0x2FE6244C  Win: 0x1F6  TcpLen: 20
 
+[**] [1:4000015:1] Mon nom! [**]
+[Priority: 0] 
+04/03-13:07:03.578513 192.168.0.132:60944 -> 93.88.240.114:80
+TCP TTL:64 TOS:0x0 ID:8894 IpLen:20 DgmLen:498 DF
+***AP*** Seq: 0x48324CA8  Ack: 0x2FE63E4A  Win: 0x1F5  TcpLen: 20
+
+[**] [1:4000015:1] Mon nom! [**]
+[Priority: 0] 
+04/03-13:07:03.601567 192.168.0.132:60944 -> 93.88.240.114:80
+TCP TTL:64 TOS:0x0 ID:8896 IpLen:20 DgmLen:494 DF
+***AP*** Seq: 0x48324E72  Ack: 0x2FE63EF0  Win: 0x1F5  TcpLen: 20
+```
+
+- `[**] [1:4000015:1] Mon nom! [**]`: identifiant de la règle, on y retrouve le sid, le numéro de révision ainsi que le contenu du message.
+- `[Priority: 0] `: La priorité de la règle, à 0 par défaut si elle n'a pas été définie.
+- `04/03-13:07:03.485390`: date et heure précise de l'alerte.
+- `192.168.0.132:60944 -> 93.88.240.114:80`: IP et port source ainsi que l'IP et port de destination.
+
+- `TCP TTL:64 TOS:0x0 ID:8891 IpLen:20 DgmLen:483 DF`: Informations de [l'entête du paquet IP](https://en.wikipedia.org/wiki/IPv4#Packet_structure): 
+  - le protocole (ici TCP),
+  - le time to live (TTL),
+  - type of service (TOS),
+  - identifiant du paquet (ID)
+  - taille de l'entête du paquet IP (IpLen)
+  - taille du paquet IP complet (entête et données) (DgmLen)
+- `***AP*** Seq: 0x48324AED  Ack: 0x2FE6244C  Win: 0x1F6  TcpLen: 20`: Informations de [l'entête du segment TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#TCP_segment_structure):
+  - ??
+  - numéro de séquence (Seq),
+  - numéro d'acquittement (Ack),
+  - taille de la fenêtre (Win),
+  - taille de l'entête du segment TCP (TcpLen).
+
+---
 
 --
 
