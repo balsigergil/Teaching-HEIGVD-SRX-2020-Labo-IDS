@@ -756,12 +756,13 @@ Cependant, après avoir atteint le site, aucune alerte n'est affichée dans la c
 
 ---
 
-
 **Question 25: A quoi sert le `SSL/TLS Preprocessor` ?**
 
 ---
 
-**Reponse :**  
+**Reponse :**  Ce préprocesseur permet de détecter si le trafic utilise SSL/TLS ou non afin de l'ignoré si c'est le cas dans le but d'évité des faux-positif causé par SSL/TLS. Ignoré les paquet utilisant SSL/TLS permet aussi de gagner en performance.
+
+> sources: [Snort Manual - preprocessors](http://manual-snort-org.s3-website-us-east-1.amazonaws.com/node17.html#SECTION003214000000000000000)
 
 ---
 
@@ -770,7 +771,9 @@ Cependant, après avoir atteint le site, aucune alerte n'est affichée dans la c
 
 ---
 
-**Reponse :**  
+**Reponse :**  Ce préprocesseur est un module Snort qui effectue la détection et le filtrage des informations personnelles identifiables (PII). Ces informations comprennent les numéros de carte de crédit, les numéros de sécurité sociale américains et les adresses e-mail. Une syntaxe d'expression régulière limitée est également incluse pour définir nos propres PII.
+
+> sources: [Snort Manual - preprocessors](http://manual-snort-org.s3-website-us-east-1.amazonaws.com/node17.html#SECTION003217000000000000000)
 
 ---
 
