@@ -1,3 +1,5 @@
+Auteurs : Gil Balsiger et Julien Béguin
+
 # Teaching-HEIGVD-SRX-2020-Laboratoire-IDS
 
 **Ce travail de laboratoire est à faire en équipes de 2 personnes** (oui... en remote...). Je vous laisse vous débrouiller ;-)
