@@ -649,7 +649,7 @@ Lancer Wireshark et faire une capture du trafic sur l'interface connectée au br
 
 ---
 
-**Reponse :**  
+**Reponse :**  L'option de Snort permettant d'analyser un fichier pcap ou pcapng est l'argument `-r <nom_du_fichier.pcap>`
 
 ---
 
@@ -659,7 +659,11 @@ Utiliser l'option correcte de Snort pour analyser le fichier de capture Wireshar
 
 ---
 
-**Reponse :**  
+**Reponse :**  Il n'y a pas de réel différence entre le mode en temps réel et la lecture du fichier. L'analyse se fait de la même manière et l'affichage est identique.
+
+Si on décide d'afficher les alertes directement dans la console, on peut observer le résultat suivant.
+
+![snort -r](images/snort-r.png)
 
 ---
 
@@ -667,7 +671,7 @@ Utiliser l'option correcte de Snort pour analyser le fichier de capture Wireshar
 
 ---
 
-**Reponse :**  
+**Reponse :**  Oui l'enregistrement des log est toujours effectué dans le fichier `/var/log/snort/alert`.
 
 ---
 
@@ -687,7 +691,6 @@ Faire des recherches à propos des outils `fragroute` et `fragtest`.
 - **fragtest**: permet de tester le comportement de ré-assemblage des fragments IP
 
 ---
-
 
 **Question 21: Quel est le principe de fonctionnement ?**
 
@@ -733,7 +736,7 @@ Modifier le fichier `myrules.rules` pour que snort utiliser le `Frag3 Preprocess
 
 ---
 
-**Reponse :**  Afin d'activer le preprocessor dans Snort. Nous avons rajouté les 2 lignes suivantes au début du fichier `myrules.rules`.
+**Reponse :**  Afin d'activer le préprocesseur dans Snort. Nous avons rajouté les 2 lignes suivantes au début du fichier `myrules.rules`.
 
 ```
 preprocessor frag3_global
@@ -779,14 +782,12 @@ Cependant, après avoir atteint le site, aucune alerte n'est affichée dans la c
 
 ### Conclusions
 
-
 **Question 27: Donnez-nous vos conclusions et votre opinion à propos de snort**
 
 ---
 
-**Reponse :**  
+**Reponse :**  D'après ce que nous avons trouvé sur internet et les expériences que nous avons fait durant ce laboratoire, Snort est une IDS très puissant. Il est un des IDS les plus utilisé et n'est pas très cher (gratuit). Il possède une grande communauté avec un grand nombre de règles écrites par celle-ci. Tout ceci en fait un IDS de choix pour les entreprise. La configuration de cet outil reste cependant compliquée et comprendre à quoi sert telle règle ou tel préprocesseur peut prendre du temps.
 
 ---
-
 
 <sub>This guide draws heavily on http://cs.mvnu.edu/twiki/bin/view/Main/CisLab82014</sub>
