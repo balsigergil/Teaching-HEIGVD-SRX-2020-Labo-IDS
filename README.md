@@ -649,7 +649,7 @@ Lancer Wireshark et faire une capture du trafic sur l'interface connectée au br
 
 ---
 
-**Reponse :**  L'option de Snort permettant d'analyser un fichier pcap ou pcapng est l'argument `-r <nom_du_fichier.pcap>`
+**Reponse :**  L'option de Snort permettant d'analyser un fichier pcap ou pcapng est l'argument `-r <nom_du_fichier.pcap>`.
 
 ---
 
@@ -671,7 +671,7 @@ Si on décide d'afficher les alertes directement dans la console, on peut observ
 
 ---
 
-**Reponse :**  Oui l'enregistrement des log est toujours effectué dans le fichier `/var/log/snort/alert`.
+**Reponse :**  Oui l'enregistrement des log est toujours effectué dans le fichier `/var/log/snort/alert` si on ne précise pas l'option `-A console`.
 
 ---
 
