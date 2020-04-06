@@ -450,7 +450,7 @@ La troisième partie montre les paquets reçus, analysés, annulé etc... ainsi 
 
 La quatrième partie regroupe les paquets par protocole.
 
-La cinquième partie montre les statistique de la session soit le nombre d'alerte, de log et le nombre de paquets autorisés, rejetés, etc...
+La cinquième partie montre les statistiques de la session soit le nombre d'alerte, de log et le nombre de paquets autorisés, rejetés, etc...
 
 ---
 
@@ -496,7 +496,6 @@ TCP TTL:64 TOS:0x0 ID:8896 IpLen:20 DgmLen:494 DF
   - taille de l'entête du paquet IP (IpLen)
   - taille du paquet IP complet (entête et données) (DgmLen)
 - `***AP*** Seq: 0x48324AED  Ack: 0x2FE6244C  Win: 0x1F6  TcpLen: 20`: Informations de [l'entête du segment TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#TCP_segment_structure):
-  - ??
   - numéro de séquence (Seq),
   - numéro d'acquittement (Ack),
   - taille de la fenêtre (Win),
