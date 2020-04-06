@@ -689,6 +689,8 @@ Faire des recherches à propos des outils `fragroute` et `fragtest`.
 - **fragroute**:  permet d'intercepter, modifier et réécrire le trafic de sortie
 - **fragtest**: permet de tester le comportement de ré-assemblage des fragments IP
 
+> source: [https://tools.kali.org/information-gathering/fragroute](https://tools.kali.org/information-gathering/fragroute)
+
 ---
 
 **Question 21: Quel est le principe de fonctionnement ?**
@@ -696,6 +698,8 @@ Faire des recherches à propos des outils `fragroute` et `fragtest`.
 ---
 
 **Reponse :**  Ces outils proposent un ensemble de règles pour retarder, dupliquer, supprimer, fragmenter, chevaucher, imprimer, réorganiser, segmenter et autres mécanismes de modification des paquets sortant destinés à un hôte cible, avec un comportement potentiellement aléatoire ou probabiliste.
+
+> source: [https://tools.kali.org/information-gathering/fragroute](https://tools.kali.org/information-gathering/fragroute)
 
 ---
 
