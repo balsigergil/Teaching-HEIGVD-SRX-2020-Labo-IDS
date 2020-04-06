@@ -693,16 +693,20 @@ Faire des recherches à propos des outils `fragroute` et `fragtest`.
 
 ---
 
-**Reponse :**  
+**Reponse :**  Ces outils proposent un ensemble de règles pour retarder, dupliquer, supprimer, fragmenter, chevaucher, imprimer, réorganiser, segmenter et autres mécanismes de modification des paquets sortant destinés à un hôte cible, avec un comportement potentiellement aléatoire ou probabiliste.
 
 ---
-
 
 **Question 22: Qu'est-ce que le `Frag3 Preprocessor` ? A quoi ça sert et comment ça fonctionne ?**
 
 ---
 
-**Reponse :**  
+**Reponse :**  Le préprocesseur frag3 est un module de défragmentation IP basé sur cible pour Snort. Frag3 est conçu avec les objectifs suivants:
+
+1. Une exécution plus rapide avec une gestion des données moins complexe.
+2. Techniques anti-évasion de modélisation de l'hôte basées sur des cibles.
+
+> source: https://www.snort.org/faq/readme-frag3
 
 ---
 
@@ -716,17 +720,39 @@ Reprendre l'exercice de la partie [Trouver votre nom](#trouver-votre-nom-). Essa
 
 **Reponse :**  
 
+On peut voir ci-dessous l'activité de l’outil `fragroute`. En souhaitant atteindre [balsiger-architectes.ch](http://balsiger-architectes.ch), nous avons réussi à ne pas être détecté par l'IDS car aucune alerte n'est apparue dans le fichier des alertes (/var/log/snort/alert.conf).
+
+![fragroute](images/fragroute.png)
+
 ---
 
 
 Modifier le fichier `myrules.rules` pour que snort utiliser le `Frag3 Preprocessor` et refaire la tentative.
 
-
 **Question 24: Quel est le résultat ?**
 
 ---
 
-**Reponse :**  
+**Reponse :**  Afin d'activer le preprocessor dans Snort. Nous avons rajouté les 2 lignes suivantes au début du fichier `myrules.rules`.
+
+```
+preprocessor frag3_global
+preprocessor frag3_engine
+```
+
+`fragroute` est ensuite lancé avec la commande suivante:
+
+```
+fragroute -f /etc/fragroute.conf 93.88.240.114
+```
+
+Snort est lancé avec la commande suivante:
+
+```
+snort -A console -c myrules.rules -i eth1
+```
+
+Cependant, après avoir atteint le site, aucune alerte n'est affichée dans la console. Si l'objectif de frag3 est bien de prévenir la fragmentation des paquets de fragroute, cela n'a malheureusement pas fonctionné chez nous avec notre configuration.
 
 ---
 
